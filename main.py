@@ -1,18 +1,15 @@
-import io
 import sqlite3
 import sys
 
-from PyQt6 import uic
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
-from datetime import datetime
+from UI.addEditCoffeeForm import Ui_MainWindow
+from UI.main import Ui_MainWindow2
+DB_NAME = "data/coffee.sqlite"
 
-DB_NAME = "coffee.sqlite"
-
-
-class AddWidget(QMainWindow):
+class AddWidget(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        uic.loadUi('addEditCoffeeForm.ui', self)
+        self.setupUi(self)
         self.con = sqlite3.connect(DB_NAME)
         self.pushButton.clicked.connect(self.add_elem)
         self.type.addItems(['Молотый', 'В зёрнах'])
@@ -55,10 +52,10 @@ class AddWidget(QMainWindow):
         return self.__is_adding_successful
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow2):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)
+        self.setupUi(self)
         self.con = sqlite3.connect(DB_NAME)
         self.update_result()
         self.pushButton.clicked.connect(self.adding)
@@ -68,7 +65,6 @@ class MyWidget(QMainWindow):
         cur = self.con.cursor()
         que = 'select * from products'
         result = cur.execute(que).fetchall()
-
         self.tableWidget.setRowCount(len(result))
         self.tableWidget.setColumnCount(len(result[0]))
         self.tableWidget.setHorizontalHeaderLabels(
