@@ -18,13 +18,30 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>70</y>
       <width>731</width>
-      <height>561</height>
+      <height>531</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(170, 139, 139)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>10</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 0, 0);
+color: white</string>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
     </property>
    </widget>
   </widget>
